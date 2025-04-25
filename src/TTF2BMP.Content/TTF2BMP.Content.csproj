@@ -5,7 +5,7 @@
 		<Nullable>enable</Nullable>
 		<AssemblyName>TTF2BMP.Content</AssemblyName>
 		<RootNamespace>TTF2BMP.Content</RootNamespace>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 	</PropertyGroup>
 	
 	<ItemGroup>

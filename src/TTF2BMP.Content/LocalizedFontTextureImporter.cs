@@ -1,14 +1,13 @@
 ﻿using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
-using System.Collections.Generic;
 using System.IO;
 
 namespace TTF2BMP.Content;
 
 /// <summary>
-/// Class to import a text file of chars along with the bitmap they reference
+/// Provides methods for reading localized font textures for use in the Content Pipeline.
 /// </summary>
-[ContentImporter(".bmp", DefaultProcessor = "LocalizedFontTextureProcessor", DisplayName = "Texture Importer - Localized Font")]
+[ContentImporter(".bmp", DefaultProcessor = nameof(LocalizedFontTextureProcessor), DisplayName = "Localized Font - Importer")]
 public sealed class LocalizedFontTextureImporter : TextureImporter
 {
   public override TextureContent Import(string filename, ContentImporterContext context)
@@ -18,12 +17,9 @@ public sealed class LocalizedFontTextureImporter : TextureImporter
 
     // Get the text file that should have been generated with the same name as the bitmap
     string textFileName = Path.ChangeExtension(filename, ".txt");
-
     // Read all the characters
-    string allChars = File.ReadAllText(textFileName);
-    List<char> chars = [.. allChars];
-    LocalizedFontTextureContent localizedFontTextureContent = new(baseTextureContent, chars);
+    string allCharacters = File.ReadAllText(textFileName);
 
-    return localizedFontTextureContent;
+    return new LocalizedFontTextureContent(baseTextureContent, [.. allCharacters]);
   }
 }

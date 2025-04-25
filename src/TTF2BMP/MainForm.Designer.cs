@@ -27,331 +27,355 @@ namespace TTF2BMP
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+    #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-			this.Antialias = new System.Windows.Forms.CheckBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.Sample = new System.Windows.Forms.Label();
-			this.Export = new System.Windows.Forms.Button();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.label8 = new System.Windows.Forms.Label();
-			this.TextFilesListBox = new System.Windows.Forms.ListBox();
-			this.ChooseTextFilesButton = new System.Windows.Forms.Button();
-			this.AlphaAmount = new System.Windows.Forms.TextBox();
-			this.ShadowColorSample = new System.Windows.Forms.PictureBox();
-			this.ShadowOffset = new System.Windows.Forms.TextBox();
-			this.OutlineColorSample = new System.Windows.Forms.PictureBox();
-			this.OutlineSize = new System.Windows.Forms.TextBox();
-			this.FontSize = new System.Windows.Forms.ComboBox();
-			this.FontStyle = new System.Windows.Forms.ComboBox();
-			this.FontName = new System.Windows.Forms.ComboBox();
-			this.groupBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ShadowColorSample)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.OutlineColorSample)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// Antialias
-			// 
-			this.Antialias.AutoSize = true;
-			this.Antialias.Checked = global::TTF2BMP.Properties.Settings.Default.Antialias;
-			this.Antialias.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::TTF2BMP.Properties.Settings.Default, "Antialias", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.Antialias.Location = new System.Drawing.Point(284, 212);
-			this.Antialias.Name = "Antialias";
-			this.Antialias.Size = new System.Drawing.Size(77, 17);
-			this.Antialias.TabIndex = 10;
-			this.Antialias.Text = "&Antialiased";
-			this.Antialias.UseVisualStyleBackColor = true;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(215, 14);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(55, 13);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Font s&tyle:";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(310, 14);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(30, 13);
-			this.label3.TabIndex = 4;
-			this.label3.Text = "&Size:";
-			// 
-			// Sample
-			// 
-			this.Sample.AutoEllipsis = true;
-			this.Sample.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Sample.Location = new System.Drawing.Point(12, 375);
-			this.Sample.Name = "Sample";
-			this.Sample.Size = new System.Drawing.Size(457, 162);
-			this.Sample.TabIndex = 12;
-			this.Sample.Text = "The quick brown fox jumped over the LAZY camel";
-			this.Sample.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// Export
-			// 
-			this.Export.Location = new System.Drawing.Point(394, 210);
-			this.Export.Name = "Export";
-			this.Export.Size = new System.Drawing.Size(75, 23);
-			this.Export.TabIndex = 11;
-			this.Export.Text = "&Export";
-			this.Export.UseVisualStyleBackColor = true;
-			this.Export.Click += new System.EventHandler(this.Export_Click);
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(12, 14);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(31, 13);
-			this.label5.TabIndex = 0;
-			this.label5.Text = "&Font:";
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(6, 16);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(30, 13);
-			this.label6.TabIndex = 14;
-			this.label6.Text = "Size:";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(6, 16);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(38, 13);
-			this.label7.TabIndex = 15;
-			this.label7.Text = "Offset:";
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.label6);
-			this.groupBox1.Controls.Add(this.OutlineColorSample);
-			this.groupBox1.Controls.Add(this.OutlineSize);
-			this.groupBox1.Location = new System.Drawing.Point(367, 30);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(102, 68);
-			this.groupBox1.TabIndex = 19;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Outline:";
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.AlphaAmount);
-			this.groupBox2.Controls.Add(this.label8);
-			this.groupBox2.Controls.Add(this.ShadowColorSample);
-			this.groupBox2.Controls.Add(this.label7);
-			this.groupBox2.Controls.Add(this.ShadowOffset);
-			this.groupBox2.Location = new System.Drawing.Point(368, 117);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(101, 89);
-			this.groupBox2.TabIndex = 20;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Shadow:";
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(8, 70);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(37, 13);
-			this.label8.TabIndex = 20;
-			this.label8.Text = "Alpha:";
-			// 
-			// TextFilesListBox
-			// 
-			this.TextFilesListBox.AllowDrop = true;
-			this.TextFilesListBox.FormattingEnabled = true;
-			this.TextFilesListBox.Location = new System.Drawing.Point(15, 239);
-			this.TextFilesListBox.Margin = new System.Windows.Forms.Padding(2);
-			this.TextFilesListBox.Name = "TextFilesListBox";
-			this.TextFilesListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
-			this.TextFilesListBox.Size = new System.Drawing.Size(454, 121);
-			this.TextFilesListBox.TabIndex = 36;
-			this.TextFilesListBox.TabStop = false;
-			// 
-			// ChooseTextFilesButton
-			// 
-			this.ChooseTextFilesButton.Location = new System.Drawing.Point(15, 212);
-			this.ChooseTextFilesButton.Name = "ChooseTextFilesButton";
-			this.ChooseTextFilesButton.Size = new System.Drawing.Size(110, 23);
-			this.ChooseTextFilesButton.TabIndex = 37;
-			this.ChooseTextFilesButton.Text = "Choose Text Files";
-			this.ChooseTextFilesButton.UseVisualStyleBackColor = true;
-			this.ChooseTextFilesButton.Click += new System.EventHandler(this.ChooseTextFilesButton_Click);
-			// 
-			// AlphaAmount
-			// 
-			this.AlphaAmount.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "AlphaAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.AlphaAmount.Location = new System.Drawing.Point(47, 67);
-			this.AlphaAmount.Name = "AlphaAmount";
-			this.AlphaAmount.Size = new System.Drawing.Size(43, 20);
-			this.AlphaAmount.TabIndex = 21;
-			this.AlphaAmount.Text = global::TTF2BMP.Properties.Settings.Default.AlphaAmount;
-			// 
-			// ShadowColorSample
-			// 
-			this.ShadowColorSample.BackColor = global::TTF2BMP.Properties.Settings.Default.ShadowColor;
-			this.ShadowColorSample.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.ShadowColorSample.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::TTF2BMP.Properties.Settings.Default, "ShadowColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.ShadowColorSample.Location = new System.Drawing.Point(9, 39);
-			this.ShadowColorSample.Name = "ShadowColorSample";
-			this.ShadowColorSample.Size = new System.Drawing.Size(81, 21);
-			this.ShadowColorSample.TabIndex = 19;
-			this.ShadowColorSample.TabStop = false;
-			this.ShadowColorSample.Click += new System.EventHandler(this.ShadowColorSample_Click);
-			// 
-			// ShadowOffset
-			// 
-			this.ShadowOffset.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "ShadowOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.ShadowOffset.Location = new System.Drawing.Point(50, 13);
-			this.ShadowOffset.Name = "ShadowOffset";
-			this.ShadowOffset.Size = new System.Drawing.Size(36, 20);
-			this.ShadowOffset.TabIndex = 16;
-			this.ShadowOffset.Text = global::TTF2BMP.Properties.Settings.Default.ShadowOffset;
-			// 
-			// OutlineColorSample
-			// 
-			this.OutlineColorSample.BackColor = global::TTF2BMP.Properties.Settings.Default.OutlineColor;
-			this.OutlineColorSample.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.OutlineColorSample.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::TTF2BMP.Properties.Settings.Default, "OutlineColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.OutlineColorSample.Location = new System.Drawing.Point(9, 40);
-			this.OutlineColorSample.Name = "OutlineColorSample";
-			this.OutlineColorSample.Size = new System.Drawing.Size(81, 21);
-			this.OutlineColorSample.TabIndex = 18;
-			this.OutlineColorSample.TabStop = false;
-			this.OutlineColorSample.Click += new System.EventHandler(this.OutlineColorSample_Click);
-			// 
-			// OutlineSize
-			// 
-			this.OutlineSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "OutlineSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.OutlineSize.Location = new System.Drawing.Point(42, 13);
-			this.OutlineSize.Name = "OutlineSize";
-			this.OutlineSize.Size = new System.Drawing.Size(48, 20);
-			this.OutlineSize.TabIndex = 13;
-			this.OutlineSize.Text = global::TTF2BMP.Properties.Settings.Default.OutlineSize;
-			// 
-			// FontSize
-			// 
-			this.FontSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "FontSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.FontSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-			this.FontSize.FormattingEnabled = true;
-			this.FontSize.Items.AddRange(new object[] {
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "14",
-            "16",
-            "18",
-            "20",
-            "22",
-            "23",
-            "24",
-            "26",
-            "28",
-            "36",
-            "48",
-            "72"});
-			this.FontSize.Location = new System.Drawing.Point(312, 30);
-			this.FontSize.Name = "FontSize";
-			this.FontSize.Size = new System.Drawing.Size(49, 176);
-			this.FontSize.TabIndex = 5;
-			this.FontSize.Text = global::TTF2BMP.Properties.Settings.Default.FontSize;
-			this.FontSize.SelectedIndexChanged += new System.EventHandler(this.FontSize_SelectedIndexChanged);
-			this.FontSize.TextUpdate += new System.EventHandler(this.FontSize_TextUpdate);
-			// 
-			// FontStyle
-			// 
-			this.FontStyle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-			this.FontStyle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.FontStyle.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.FontStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-			this.FontStyle.FormattingEnabled = true;
-			this.FontStyle.Items.AddRange(new object[] {
-            "Regular",
-            "Italic",
-            "Bold",
-            "Bold, Italic"});
-			this.FontStyle.Location = new System.Drawing.Point(218, 30);
-			this.FontStyle.Name = "FontStyle";
-			this.FontStyle.Size = new System.Drawing.Size(80, 176);
-			this.FontStyle.TabIndex = 3;
-			this.FontStyle.Text = global::TTF2BMP.Properties.Settings.Default.FontStyle;
-			this.FontStyle.SelectedIndexChanged += new System.EventHandler(this.FontStyle_SelectedIndexChanged);
-			// 
-			// FontName
-			// 
-			this.FontName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-			this.FontName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.FontName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "FontName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.FontName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-			this.FontName.FormattingEnabled = true;
-			this.FontName.Location = new System.Drawing.Point(15, 30);
-			this.FontName.Name = "FontName";
-			this.FontName.Size = new System.Drawing.Size(189, 176);
-			this.FontName.TabIndex = 1;
-			this.FontName.Text = global::TTF2BMP.Properties.Settings.Default.FontName;
-			this.FontName.SelectedIndexChanged += new System.EventHandler(this.FontName_SelectedIndexChanged);
-			// 
-			// MainForm
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(490, 546);
-			this.Controls.Add(this.ChooseTextFilesButton);
-			this.Controls.Add(this.TextFilesListBox);
-			this.Controls.Add(this.groupBox2);
-			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.Export);
-			this.Controls.Add(this.Sample);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.Antialias);
-			this.Controls.Add(this.FontSize);
-			this.Controls.Add(this.FontStyle);
-			this.Controls.Add(this.FontName);
-			this.Name = "MainForm";
-			this.Text = "ttf2bmp";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.ShadowColorSample)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.OutlineColorSample)).EndInit();
-			this.ResumeLayout(false);
-			this.PerformLayout();
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+      Properties.Settings settings1 = new Properties.Settings();
+      Antialias = new System.Windows.Forms.CheckBox();
+      label2 = new System.Windows.Forms.Label();
+      label3 = new System.Windows.Forms.Label();
+      Sample = new System.Windows.Forms.Label();
+      Export = new System.Windows.Forms.Button();
+      label5 = new System.Windows.Forms.Label();
+      label6 = new System.Windows.Forms.Label();
+      label7 = new System.Windows.Forms.Label();
+      colorDialog = new System.Windows.Forms.ColorDialog();
+      groupBox1 = new System.Windows.Forms.GroupBox();
+      OutlineColorSample = new System.Windows.Forms.PictureBox();
+      OutlineSize = new System.Windows.Forms.TextBox();
+      groupBox2 = new System.Windows.Forms.GroupBox();
+      AlphaAmount = new System.Windows.Forms.TextBox();
+      label8 = new System.Windows.Forms.Label();
+      ShadowColorSample = new System.Windows.Forms.PictureBox();
+      ShadowOffset = new System.Windows.Forms.TextBox();
+      TextFilesListBox = new System.Windows.Forms.ListBox();
+      ChooseTextFilesButton = new System.Windows.Forms.Button();
+      FontSize = new System.Windows.Forms.ComboBox();
+      FontStyle = new System.Windows.Forms.ComboBox();
+      FontName = new System.Windows.Forms.ComboBox();
+      checkBoxExportDefault = new System.Windows.Forms.CheckBox();
+      groupBox1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)OutlineColorSample).BeginInit();
+      groupBox2.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)ShadowColorSample).BeginInit();
+      SuspendLayout();
+      // 
+      // Antialias
+      // 
+      Antialias.AutoSize = true;
+      settings1.AlphaAmount = "128";
+      settings1.Antialias = false;
+      settings1.ExportDir = "";
+      settings1.FontName = "";
+      settings1.FontSize = "8";
+      settings1.FontStyle = "Regular";
+      settings1.OutlineColor = System.Drawing.Color.Black;
+      settings1.OutlineSize = "0";
+      settings1.SettingsKey = "";
+      settings1.ShadowColor = System.Drawing.Color.Gray;
+      settings1.ShadowOffset = "0";
+      settings1.TextFiles = null;
+      settings1.TextFilesDir = "";
+      Antialias.DataBindings.Add(new System.Windows.Forms.Binding("Checked", settings1, "Antialias", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      Antialias.Location = new System.Drawing.Point(336, 247);
+      Antialias.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      Antialias.Name = "Antialias";
+      Antialias.Size = new System.Drawing.Size(84, 19);
+      Antialias.TabIndex = 10;
+      Antialias.Text = "&Antialiased";
+      Antialias.UseVisualStyleBackColor = true;
+      // 
+      // label2
+      // 
+      label2.AutoSize = true;
+      label2.Location = new System.Drawing.Point(251, 16);
+      label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      label2.Name = "label2";
+      label2.Size = new System.Drawing.Size(61, 15);
+      label2.TabIndex = 2;
+      label2.Text = "Font s&tyle:";
+      // 
+      // label3
+      // 
+      label3.AutoSize = true;
+      label3.Location = new System.Drawing.Point(362, 16);
+      label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      label3.Name = "label3";
+      label3.Size = new System.Drawing.Size(30, 15);
+      label3.TabIndex = 4;
+      label3.Text = "&Size:";
+      // 
+      // Sample
+      // 
+      Sample.AutoEllipsis = true;
+      Sample.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+      Sample.Location = new System.Drawing.Point(14, 433);
+      Sample.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      Sample.Name = "Sample";
+      Sample.Size = new System.Drawing.Size(533, 187);
+      Sample.TabIndex = 12;
+      Sample.Text = "The quick brown fox jumped over the LAZY camel";
+      Sample.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // Export
+      // 
+      Export.Location = new System.Drawing.Point(460, 242);
+      Export.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      Export.Name = "Export";
+      Export.Size = new System.Drawing.Size(88, 27);
+      Export.TabIndex = 11;
+      Export.Text = "&Export";
+      Export.UseVisualStyleBackColor = true;
+      Export.Click += Export_Click;
+      // 
+      // label5
+      // 
+      label5.AutoSize = true;
+      label5.Location = new System.Drawing.Point(14, 16);
+      label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      label5.Name = "label5";
+      label5.Size = new System.Drawing.Size(34, 15);
+      label5.TabIndex = 0;
+      label5.Text = "&Font:";
+      // 
+      // label6
+      // 
+      label6.AutoSize = true;
+      label6.Location = new System.Drawing.Point(7, 18);
+      label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      label6.Name = "label6";
+      label6.Size = new System.Drawing.Size(30, 15);
+      label6.TabIndex = 14;
+      label6.Text = "Size:";
+      // 
+      // label7
+      // 
+      label7.AutoSize = true;
+      label7.Location = new System.Drawing.Point(7, 18);
+      label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      label7.Name = "label7";
+      label7.Size = new System.Drawing.Size(42, 15);
+      label7.TabIndex = 15;
+      label7.Text = "Offset:";
+      // 
+      // groupBox1
+      // 
+      groupBox1.Controls.Add(label6);
+      groupBox1.Controls.Add(OutlineColorSample);
+      groupBox1.Controls.Add(OutlineSize);
+      groupBox1.Location = new System.Drawing.Point(428, 35);
+      groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      groupBox1.Name = "groupBox1";
+      groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      groupBox1.Size = new System.Drawing.Size(119, 78);
+      groupBox1.TabIndex = 19;
+      groupBox1.TabStop = false;
+      groupBox1.Text = "Outline:";
+      // 
+      // OutlineColorSample
+      // 
+      OutlineColorSample.BackColor = System.Drawing.Color.Black;
+      OutlineColorSample.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      OutlineColorSample.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", settings1, "OutlineColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      OutlineColorSample.Location = new System.Drawing.Point(10, 46);
+      OutlineColorSample.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      OutlineColorSample.Name = "OutlineColorSample";
+      OutlineColorSample.Size = new System.Drawing.Size(94, 24);
+      OutlineColorSample.TabIndex = 18;
+      OutlineColorSample.TabStop = false;
+      OutlineColorSample.Click += OutlineColorSample_Click;
+      // 
+      // OutlineSize
+      // 
+      OutlineSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "OutlineSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      OutlineSize.Location = new System.Drawing.Point(49, 15);
+      OutlineSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      OutlineSize.Name = "OutlineSize";
+      OutlineSize.Size = new System.Drawing.Size(55, 23);
+      OutlineSize.TabIndex = 13;
+      OutlineSize.Text = "0";
+      // 
+      // groupBox2
+      // 
+      groupBox2.Controls.Add(AlphaAmount);
+      groupBox2.Controls.Add(label8);
+      groupBox2.Controls.Add(ShadowColorSample);
+      groupBox2.Controls.Add(label7);
+      groupBox2.Controls.Add(ShadowOffset);
+      groupBox2.Location = new System.Drawing.Point(429, 135);
+      groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      groupBox2.Name = "groupBox2";
+      groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      groupBox2.Size = new System.Drawing.Size(118, 103);
+      groupBox2.TabIndex = 20;
+      groupBox2.TabStop = false;
+      groupBox2.Text = "Shadow:";
+      // 
+      // AlphaAmount
+      // 
+      AlphaAmount.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "AlphaAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      AlphaAmount.Location = new System.Drawing.Point(55, 77);
+      AlphaAmount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      AlphaAmount.Name = "AlphaAmount";
+      AlphaAmount.Size = new System.Drawing.Size(50, 23);
+      AlphaAmount.TabIndex = 21;
+      AlphaAmount.Text = "128";
+      // 
+      // label8
+      // 
+      label8.AutoSize = true;
+      label8.Location = new System.Drawing.Point(9, 81);
+      label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      label8.Name = "label8";
+      label8.Size = new System.Drawing.Size(41, 15);
+      label8.TabIndex = 20;
+      label8.Text = "Alpha:";
+      // 
+      // ShadowColorSample
+      // 
+      ShadowColorSample.BackColor = System.Drawing.Color.Gray;
+      ShadowColorSample.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      ShadowColorSample.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", settings1, "ShadowColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      ShadowColorSample.Location = new System.Drawing.Point(10, 45);
+      ShadowColorSample.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      ShadowColorSample.Name = "ShadowColorSample";
+      ShadowColorSample.Size = new System.Drawing.Size(94, 24);
+      ShadowColorSample.TabIndex = 19;
+      ShadowColorSample.TabStop = false;
+      ShadowColorSample.Click += ShadowColorSample_Click;
+      // 
+      // ShadowOffset
+      // 
+      ShadowOffset.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "ShadowOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      ShadowOffset.Location = new System.Drawing.Point(58, 15);
+      ShadowOffset.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      ShadowOffset.Name = "ShadowOffset";
+      ShadowOffset.Size = new System.Drawing.Size(41, 23);
+      ShadowOffset.TabIndex = 16;
+      ShadowOffset.Text = "0";
+      // 
+      // TextFilesListBox
+      // 
+      TextFilesListBox.AllowDrop = true;
+      TextFilesListBox.FormattingEnabled = true;
+      TextFilesListBox.ItemHeight = 15;
+      TextFilesListBox.Location = new System.Drawing.Point(18, 276);
+      TextFilesListBox.Margin = new System.Windows.Forms.Padding(2);
+      TextFilesListBox.Name = "TextFilesListBox";
+      TextFilesListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
+      TextFilesListBox.Size = new System.Drawing.Size(529, 139);
+      TextFilesListBox.TabIndex = 36;
+      TextFilesListBox.TabStop = false;
+      // 
+      // ChooseTextFilesButton
+      // 
+      ChooseTextFilesButton.Location = new System.Drawing.Point(18, 242);
+      ChooseTextFilesButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      ChooseTextFilesButton.Name = "ChooseTextFilesButton";
+      ChooseTextFilesButton.Size = new System.Drawing.Size(128, 27);
+      ChooseTextFilesButton.TabIndex = 37;
+      ChooseTextFilesButton.Text = "Choose Text Files";
+      ChooseTextFilesButton.UseVisualStyleBackColor = true;
+      ChooseTextFilesButton.Click += ChooseTextFilesButton_Click;
+      // 
+      // FontSize
+      // 
+      FontSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      FontSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+      FontSize.FormattingEnabled = true;
+      FontSize.Items.AddRange(new object[] { "4", "5", "6", "7", "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "23", "24", "26", "28", "36", "48", "72" });
+      FontSize.Location = new System.Drawing.Point(364, 35);
+      FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      FontSize.Name = "FontSize";
+      FontSize.Size = new System.Drawing.Size(56, 202);
+      FontSize.TabIndex = 5;
+      FontSize.Text = "8";
+      FontSize.SelectedIndexChanged += FontSize_SelectedIndexChanged;
+      FontSize.TextUpdate += FontSize_TextUpdate;
+      // 
+      // FontStyle
+      // 
+      FontStyle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+      FontStyle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+      FontStyle.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      FontStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+      FontStyle.FormattingEnabled = true;
+      FontStyle.Items.AddRange(new object[] { "Regular", "Italic", "Bold", "Bold, Italic" });
+      FontStyle.Location = new System.Drawing.Point(254, 35);
+      FontStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      FontStyle.Name = "FontStyle";
+      FontStyle.Size = new System.Drawing.Size(93, 202);
+      FontStyle.TabIndex = 3;
+      FontStyle.Text = "Regular";
+      FontStyle.SelectedIndexChanged += FontStyle_SelectedIndexChanged;
+      // 
+      // FontName
+      // 
+      FontName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+      FontName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+      FontName.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      FontName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+      FontName.FormattingEnabled = true;
+      FontName.Location = new System.Drawing.Point(18, 35);
+      FontName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      FontName.Name = "FontName";
+      FontName.Size = new System.Drawing.Size(220, 202);
+      FontName.TabIndex = 1;
+      FontName.SelectedIndexChanged += FontName_SelectedIndexChanged;
+      // 
+      // checkBoxExportAllGlyphs
+      // 
+      checkBoxExportDefault.AutoSize = true;
+      checkBoxExportDefault.Location = new System.Drawing.Point(153, 247);
+      checkBoxExportDefault.Name = "checkBoxExportAllGlyphs";
+      checkBoxExportDefault.Size = new System.Drawing.Size(157, 19);
+      checkBoxExportDefault.TabIndex = 38;
+      checkBoxExportDefault.Text = "Export Default ( 32 .. 126)";
+      checkBoxExportDefault.UseVisualStyleBackColor = true;
+      checkBoxExportDefault.CheckedChanged += CheckBoxExportDefault_CheckedChanged;
+      // 
+      // MainForm
+      // 
+      AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+      AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      ClientSize = new System.Drawing.Size(572, 630);
+      Controls.Add(checkBoxExportDefault);
+      Controls.Add(ChooseTextFilesButton);
+      Controls.Add(TextFilesListBox);
+      Controls.Add(groupBox2);
+      Controls.Add(groupBox1);
+      Controls.Add(Export);
+      Controls.Add(Sample);
+      Controls.Add(label3);
+      Controls.Add(label2);
+      Controls.Add(label5);
+      Controls.Add(Antialias);
+      Controls.Add(FontSize);
+      Controls.Add(FontStyle);
+      Controls.Add(FontName);
+      Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      Name = "MainForm";
+      Text = "TTF2BMP";
+      FormClosing += MainForm_FormClosing;
+      groupBox1.ResumeLayout(false);
+      groupBox1.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)OutlineColorSample).EndInit();
+      groupBox2.ResumeLayout(false);
+      groupBox2.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)ShadowColorSample).EndInit();
+      ResumeLayout(false);
+      PerformLayout();
 
-        }
+    }
 
-        #endregion
+    #endregion
 
-        private System.Windows.Forms.ComboBox FontName;
+    private System.Windows.Forms.ComboBox FontName;
         private System.Windows.Forms.ComboBox FontStyle;
         private System.Windows.Forms.ComboBox FontSize;
         private System.Windows.Forms.CheckBox Antialias;
@@ -364,7 +388,7 @@ namespace TTF2BMP
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TextBox ShadowOffset;
-		private System.Windows.Forms.ColorDialog colorDialog1;
+		private System.Windows.Forms.ColorDialog colorDialog;
 		private System.Windows.Forms.PictureBox OutlineColorSample;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
@@ -373,6 +397,7 @@ namespace TTF2BMP
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.ListBox TextFilesListBox;
 		private System.Windows.Forms.Button ChooseTextFilesButton;
-	}
+    private System.Windows.Forms.CheckBox checkBoxExportDefault;
+  }
 }
 

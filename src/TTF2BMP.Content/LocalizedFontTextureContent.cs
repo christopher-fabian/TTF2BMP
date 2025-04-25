@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace TTF2BMP.Content;
 
 /// <summary>
-/// Class to allow us to add the source path to the processor.
+/// Provides properties for maintaining a localized font texture.
 /// </summary>
 public sealed class LocalizedFontTextureContent(TextureContent baseContent, List<char> characters) : Texture2DContent
 {

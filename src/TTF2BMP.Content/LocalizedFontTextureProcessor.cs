@@ -6,19 +6,13 @@ using System.ComponentModel;
 
 namespace TTF2BMP.Content;
 
-[ContentProcessor(DisplayName = "Font Texture - Localized")]
+[ContentProcessor(DisplayName = "Localized Font - Processor")]
 public sealed class LocalizedFontTextureProcessor : FontTextureProcessor
 {
-  private List<char> characters = default!;
+  private List<char> characters = [];
 
   [DefaultValue('?')]
-  public char DefaultCharacter { get; set; }
-
-  /// <summary>
-  /// Creates a new LocalizedFontTextureProcessor.
-  /// </summary>
-  public LocalizedFontTextureProcessor() : base()
-    => DefaultCharacter = '?';
+  public char DefaultCharacter { get; set; } = '?';
 
   /// <inheritdoc/>
   protected override char GetCharacterForIndex(int index)
@@ -33,10 +27,10 @@ public sealed class LocalizedFontTextureProcessor : FontTextureProcessor
 
     // Our localized texture input just contains the base Texture2DContent and the list of characters
     Texture2DContent textureContent = (Texture2DContent)localizedContent.BaseContent;
-    SpriteFontContent outputContent = base.Process(textureContent, context);
-    // Need to set a default character for this kind of font as well
-    outputContent.DefaultCharacter = DefaultCharacter;
+    SpriteFontContent spriteFontContent = base.Process(textureContent, context);
+    // Set the default character for this kind of font as well
+    spriteFontContent.DefaultCharacter = DefaultCharacter;
 
-    return outputContent;
+    return spriteFontContent;
   }
 }
