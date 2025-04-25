@@ -5,7 +5,7 @@
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
 
-namespace TrueTypeConverter
+namespace TTF2BMP
 {
     partial class MainForm
     {
@@ -66,8 +66,8 @@ namespace TrueTypeConverter
 			// Antialias
 			// 
 			this.Antialias.AutoSize = true;
-			this.Antialias.Checked = global::TrueTypeConverter.Properties.Settings.Default.Antialias;
-			this.Antialias.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::TrueTypeConverter.Properties.Settings.Default, "Antialias", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.Antialias.Checked = global::TTF2BMP.Properties.Settings.Default.Antialias;
+			this.Antialias.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::TTF2BMP.Properties.Settings.Default, "Antialias", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.Antialias.Location = new System.Drawing.Point(284, 212);
 			this.Antialias.Name = "Antialias";
 			this.Antialias.Size = new System.Drawing.Size(77, 17);
@@ -200,18 +200,18 @@ namespace TrueTypeConverter
 			// 
 			// AlphaAmount
 			// 
-			this.AlphaAmount.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TrueTypeConverter.Properties.Settings.Default, "AlphaAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.AlphaAmount.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "AlphaAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.AlphaAmount.Location = new System.Drawing.Point(47, 67);
 			this.AlphaAmount.Name = "AlphaAmount";
 			this.AlphaAmount.Size = new System.Drawing.Size(43, 20);
 			this.AlphaAmount.TabIndex = 21;
-			this.AlphaAmount.Text = global::TrueTypeConverter.Properties.Settings.Default.AlphaAmount;
+			this.AlphaAmount.Text = global::TTF2BMP.Properties.Settings.Default.AlphaAmount;
 			// 
 			// ShadowColorSample
 			// 
-			this.ShadowColorSample.BackColor = global::TrueTypeConverter.Properties.Settings.Default.ShadowColor;
+			this.ShadowColorSample.BackColor = global::TTF2BMP.Properties.Settings.Default.ShadowColor;
 			this.ShadowColorSample.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.ShadowColorSample.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::TrueTypeConverter.Properties.Settings.Default, "ShadowColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.ShadowColorSample.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::TTF2BMP.Properties.Settings.Default, "ShadowColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.ShadowColorSample.Location = new System.Drawing.Point(9, 39);
 			this.ShadowColorSample.Name = "ShadowColorSample";
 			this.ShadowColorSample.Size = new System.Drawing.Size(81, 21);
@@ -221,18 +221,18 @@ namespace TrueTypeConverter
 			// 
 			// ShadowOffset
 			// 
-			this.ShadowOffset.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TrueTypeConverter.Properties.Settings.Default, "ShadowOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.ShadowOffset.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "ShadowOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.ShadowOffset.Location = new System.Drawing.Point(50, 13);
 			this.ShadowOffset.Name = "ShadowOffset";
 			this.ShadowOffset.Size = new System.Drawing.Size(36, 20);
 			this.ShadowOffset.TabIndex = 16;
-			this.ShadowOffset.Text = global::TrueTypeConverter.Properties.Settings.Default.ShadowOffset;
+			this.ShadowOffset.Text = global::TTF2BMP.Properties.Settings.Default.ShadowOffset;
 			// 
 			// OutlineColorSample
 			// 
-			this.OutlineColorSample.BackColor = global::TrueTypeConverter.Properties.Settings.Default.OutlineColor;
+			this.OutlineColorSample.BackColor = global::TTF2BMP.Properties.Settings.Default.OutlineColor;
 			this.OutlineColorSample.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.OutlineColorSample.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::TrueTypeConverter.Properties.Settings.Default, "OutlineColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.OutlineColorSample.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::TTF2BMP.Properties.Settings.Default, "OutlineColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.OutlineColorSample.Location = new System.Drawing.Point(9, 40);
 			this.OutlineColorSample.Name = "OutlineColorSample";
 			this.OutlineColorSample.Size = new System.Drawing.Size(81, 21);
@@ -242,16 +242,16 @@ namespace TrueTypeConverter
 			// 
 			// OutlineSize
 			// 
-			this.OutlineSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TrueTypeConverter.Properties.Settings.Default, "OutlineSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.OutlineSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "OutlineSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.OutlineSize.Location = new System.Drawing.Point(42, 13);
 			this.OutlineSize.Name = "OutlineSize";
 			this.OutlineSize.Size = new System.Drawing.Size(48, 20);
 			this.OutlineSize.TabIndex = 13;
-			this.OutlineSize.Text = global::TrueTypeConverter.Properties.Settings.Default.OutlineSize;
+			this.OutlineSize.Text = global::TTF2BMP.Properties.Settings.Default.OutlineSize;
 			// 
 			// FontSize
 			// 
-			this.FontSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TrueTypeConverter.Properties.Settings.Default, "FontSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.FontSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "FontSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.FontSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
 			this.FontSize.FormattingEnabled = true;
 			this.FontSize.Items.AddRange(new object[] {
@@ -280,7 +280,7 @@ namespace TrueTypeConverter
 			this.FontSize.Name = "FontSize";
 			this.FontSize.Size = new System.Drawing.Size(49, 176);
 			this.FontSize.TabIndex = 5;
-			this.FontSize.Text = global::TrueTypeConverter.Properties.Settings.Default.FontSize;
+			this.FontSize.Text = global::TTF2BMP.Properties.Settings.Default.FontSize;
 			this.FontSize.SelectedIndexChanged += new System.EventHandler(this.FontSize_SelectedIndexChanged);
 			this.FontSize.TextUpdate += new System.EventHandler(this.FontSize_TextUpdate);
 			// 
@@ -288,7 +288,7 @@ namespace TrueTypeConverter
 			// 
 			this.FontStyle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
 			this.FontStyle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.FontStyle.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TrueTypeConverter.Properties.Settings.Default, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.FontStyle.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.FontStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
 			this.FontStyle.FormattingEnabled = true;
 			this.FontStyle.Items.AddRange(new object[] {
@@ -300,21 +300,21 @@ namespace TrueTypeConverter
 			this.FontStyle.Name = "FontStyle";
 			this.FontStyle.Size = new System.Drawing.Size(80, 176);
 			this.FontStyle.TabIndex = 3;
-			this.FontStyle.Text = global::TrueTypeConverter.Properties.Settings.Default.FontStyle;
+			this.FontStyle.Text = global::TTF2BMP.Properties.Settings.Default.FontStyle;
 			this.FontStyle.SelectedIndexChanged += new System.EventHandler(this.FontStyle_SelectedIndexChanged);
 			// 
 			// FontName
 			// 
 			this.FontName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
 			this.FontName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.FontName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TrueTypeConverter.Properties.Settings.Default, "FontName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.FontName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TTF2BMP.Properties.Settings.Default, "FontName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.FontName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
 			this.FontName.FormattingEnabled = true;
 			this.FontName.Location = new System.Drawing.Point(15, 30);
 			this.FontName.Name = "FontName";
 			this.FontName.Size = new System.Drawing.Size(189, 176);
 			this.FontName.TabIndex = 1;
-			this.FontName.Text = global::TrueTypeConverter.Properties.Settings.Default.FontName;
+			this.FontName.Text = global::TTF2BMP.Properties.Settings.Default.FontName;
 			this.FontName.SelectedIndexChanged += new System.EventHandler(this.FontName_SelectedIndexChanged);
 			// 
 			// MainForm

@@ -1,27 +1,15 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// MainForm.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
-#region Using Statements
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Windows.Forms;
-using System.Globalization;
-using System.Collections.Generic;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Drawing.Text;
+using System.Globalization;
 using System.IO;
-#endregion
+using System.Windows.Forms;
 
-namespace TrueTypeConverter;
+namespace TTF2BMP;
 
 /// <summary>
 /// Utility for rendering Windows fonts out into a BMP file
@@ -35,10 +23,6 @@ public partial class MainForm : Form
   Font font;
   string fontError;
 
-
-  /// <summary>
-  /// Constructor.
-  /// </summary>
   public MainForm()
   {
     InitializeComponent();
@@ -62,12 +46,10 @@ public partial class MainForm : Form
     }
   }
 
-
   /// <summary>
   /// When the font selection changes, create a new Font
   /// instance and update the preview text label.
   /// </summary>
-  [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
   void SelectionChanged()
   {
     try
@@ -110,7 +92,6 @@ public partial class MainForm : Form
     }
   }
 
-
   /// <summary>
   /// Selection changed event handler.
   /// </summary>
@@ -118,7 +99,6 @@ public partial class MainForm : Form
   {
     SelectionChanged();
   }
-
 
   /// <summary>
   /// Selection changed event handler.
@@ -128,7 +108,6 @@ public partial class MainForm : Form
     SelectionChanged();
   }
 
-
   /// <summary>
   /// Selection changed event handler.
   /// </summary>
@@ -136,7 +115,6 @@ public partial class MainForm : Form
   {
     SelectionChanged();
   }
-
 
   /// <summary>
   /// Selection changed event handler.
@@ -172,7 +150,6 @@ public partial class MainForm : Form
   /// <summary>
   /// Event handler for when the user clicks on the Export button.
   /// </summary>
-  [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
   private void Export_Click(object sender, EventArgs e)
   {
     try
@@ -312,7 +289,6 @@ public partial class MainForm : Form
     }
   }
 
-
   /// <summary>
   /// Helper for rendering out a single font character
   /// into a System.Drawing bitmap.
@@ -394,7 +370,6 @@ public partial class MainForm : Form
     return CropCharacter(bitmap);
   }
 
-
   /// <summary>
   /// Helper for cropping ununsed space from the sides of a bitmap.
   /// </summary>
@@ -446,7 +421,6 @@ public partial class MainForm : Form
     return croppedBitmap;
   }
 
-
   /// <summary>
   /// Helper for testing whether a column of a bitmap is entirely empty.
   /// </summary>
@@ -459,32 +433,6 @@ public partial class MainForm : Form
     }
 
     return true;
-  }
-
-
-  /// <summary>
-  /// Helper for converting strings to integer.
-  /// </summary>
-  static int ParseHex(string text)
-  {
-    NumberStyles style;
-
-    if (text.StartsWith("0x"))
-    {
-      style = NumberStyles.HexNumber;
-      text = text.Substring(2);
-    }
-    else
-    {
-      style = NumberStyles.Integer;
-    }
-
-    int result;
-
-    if (!int.TryParse(text, style, null, out result))
-      return -1;
-
-    return result;
   }
 
   private void OutlineColorSample_Click(object sender, EventArgs e)
