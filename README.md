@@ -1,6 +1,6 @@
 # TTF2BMP
 
-A .NET Library and Tool for converting .ttf to .bmp for Localized Font Textures in MonoGame.  
+A .NET Library and Tool for converting .ttf to .bmp for Localized Font Textures in MonoGame (3.8.3+).  
 
 If you want sprite font textures which only contain the characters used in your localized text,  
 this is especially for small pixel fonts that might need manual editing of the texture. 
