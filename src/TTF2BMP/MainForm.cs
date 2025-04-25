@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
-using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
@@ -55,9 +53,7 @@ public partial class MainForm : Form
     try
     {
       // Parse the size selection.
-      float size;
-
-      if (!float.TryParse(FontSize.Text, out size) || (size <= 0))
+      if (!float.TryParse(FontSize.Text, out float size) || (size <= 0))
       {
         fontError = "Invalid font size '" + FontSize.Text + "'";
         return;
@@ -160,25 +156,24 @@ public partial class MainForm : Form
 
 
       // Choose the output file.
-      SaveFileDialog fileSelector = new SaveFileDialog();
-
-      fileSelector.InitialDirectory = Properties.Settings.Default.ExportDir;
-      fileSelector.Title = "Export Font";
-      fileSelector.DefaultExt = "bmp";
-      fileSelector.Filter = "Image files (*.bmp)|*.bmp|All files (*.*)|*.*";
+      SaveFileDialog fileSelector = new()
+      {
+        InitialDirectory = Properties.Settings.Default.ExportDir,
+        Title = "Export Font",
+        DefaultExt = "bmp",
+        Filter = "Image files (*.bmp)|*.bmp|All files (*.*)|*.*"
+      };
 
       if (fileSelector.ShowDialog() == DialogResult.OK)
       {
-
-        //Get the path to the game text
-        string outputDir = Path.GetDirectoryName(fileSelector.FileName);
+        // Get the path to the game text
+        string outputDir = Path.GetDirectoryName(fileSelector.FileName)!;
         Properties.Settings.Default.ExportDir = outputDir;
 
-        //Just grab every string in every language.
-        string allText = "";
+        // Just grab every string in every language.
+        string allText = string.Empty;
 
-        HashSet<char> charSet = new HashSet<char>();
-        List<char> charList = new List<char>();
+        HashSet<char> charSet = [];
 
         foreach (string file in TextFilesListBox.Items)
         {
@@ -187,24 +182,25 @@ public partial class MainForm : Form
           allText += readText;
         }
 
-
         // Scan each character of the string.
         foreach (char usedCharacter in allText)
         {
-          if (!charSet.Contains(usedCharacter))
-          {
-            charSet.Add(usedCharacter);
-            charList.Add(usedCharacter);
-          }
+          // SpriteFont Importer only expects characters from the ranges defined in <CharacterRegions>
+          // (typically from Space (32) to Tilde (126)).
+          if (usedCharacter < 32)
+            continue;
+
+          charSet.Add(usedCharacter);
         }
+
+        // Character map must be in ascending order.
+        List<char> charList = [.. charSet];
         charList.Sort();
 
-
-
         // Build up a list of all the glyphs to be output.
-        List<Bitmap> bitmaps = new List<Bitmap>();
-        List<int> xPositions = new List<int>();
-        List<int> yPositions = new List<int>();
+        List<Bitmap> bitmaps = [];
+        List<int> xPositions = [];
+        List<int> yPositions = [];
 
         try
         {
@@ -242,8 +238,7 @@ public partial class MainForm : Form
             }
           }
 
-          using (Bitmap bitmap = new Bitmap(width, height + lineHeight,
-                            PixelFormat.Format32bppArgb))
+          using (Bitmap bitmap = new Bitmap(width, height + lineHeight, PixelFormat.Format32bppArgb))
           {
             // Arrage all the glyphs onto a single larger bitmap.
             using (Graphics graphics = Graphics.FromImage(bitmap))
@@ -252,10 +247,7 @@ public partial class MainForm : Form
               graphics.CompositingMode = CompositingMode.SourceCopy;
 
               for (int i = 0; i < bitmaps.Count; i++)
-              {
-                graphics.DrawImage(bitmaps[i], xPositions[i],
-                                 yPositions[i]);
-              }
+                graphics.DrawImage(bitmaps[i], xPositions[i], yPositions[i]);
 
               graphics.Flush();
             }
