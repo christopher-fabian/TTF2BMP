@@ -9,7 +9,7 @@ namespace TTF2BMP.Content;
 [ContentProcessor(DisplayName = "Localized Font - Processor")]
 public sealed class LocalizedFontTextureProcessor : FontTextureProcessor
 {
-  private List<char> characters = [];
+  private readonly List<char> characters = [];
 
   [DefaultValue('?')]
   public char DefaultCharacter { get; set; } = '?';
@@ -23,7 +23,7 @@ public sealed class LocalizedFontTextureProcessor : FontTextureProcessor
   {
     // Cast the input to our own special format
     LocalizedFontTextureContent localizedContent = (LocalizedFontTextureContent)input;
-    characters = localizedContent.Characters;
+    characters.AddRange(localizedContent.Characters);
 
     // Our localized texture input just contains the base Texture2DContent and the list of characters
     Texture2DContent textureContent = (Texture2DContent)localizedContent.BaseContent;

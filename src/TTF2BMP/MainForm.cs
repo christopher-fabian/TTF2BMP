@@ -10,11 +10,6 @@ using TTF2BMP.Properties;
 
 namespace TTF2BMP;
 
-/// <summary>
-/// Utility for rendering Windows fonts out into a BMP file
-/// which can then be imported into the XNA Framework using
-/// the Content Pipeline FontTextureProcessor.
-/// </summary>
 public partial class MainForm : Form
 {
   // SpriteFont Importer only expects characters from the ranges defined in <CharacterRegions>
@@ -22,9 +17,11 @@ public partial class MainForm : Form
   private const int FirstCharacterUnicode = 32; // Space
   private const int LastCharacterUnicode = 126; // Tilde
 
+  private readonly PrivateFontCollection customFontCollection = new();
+  private readonly Dictionary<string, FontFamily> customFontFamilies = [];
   private readonly Bitmap globalBitmap;
   private readonly Graphics globalGraphics;
-  private Font? font;
+  private Font? selectedFont;
   private string? fontError;
 
   public MainForm()
@@ -34,10 +31,10 @@ public partial class MainForm : Form
     globalBitmap = new(1, 1, PixelFormat.Format32bppArgb);
     globalGraphics = Graphics.FromImage(globalBitmap);
 
-    foreach (FontFamily font in FontFamily.Families)
-      FontName.Items.Add(font.Name);
+    foreach (FontFamily fontFamily in FontFamily.Families)
+      comboBoxFontName.Items.Add(fontFamily.Name);
 
-    FontName.Text = Settings.Default.FontName;
+    comboBoxFontName.Text = Settings.Default.FontName;
     OutlineColorSample.BackColor = Settings.Default.OutlineColor;
     ShadowColorSample.BackColor = Settings.Default.ShadowColor;
 
@@ -59,32 +56,28 @@ public partial class MainForm : Form
   {
     try
     {
-      // Parse the size selection.
-      if (!float.TryParse(FontSize.Text, out float size) || (size <= 0))
+      // Parse the font size selection
+      if (!float.TryParse(comboBoxFontSize.Text, out float size) || (size <= 0))
       {
-        fontError = "Invalid font size '" + FontSize.Text + "'";
+        fontError = $"Invalid font size '{comboBoxFontSize.Text}'";
         return;
       }
 
-      // Parse the font style selection.
-      FontStyle style;
-
-      try
+      // Parse the font style selection
+      if (!Enum.TryParse(comboBoxFontStyle.Text, out FontStyle style))
       {
-        style = (FontStyle)Enum.Parse(typeof(FontStyle), FontStyle.Text);
-      }
-      catch
-      {
-        fontError = "Invalid font style '" + FontStyle.Text + "'";
+        fontError = $"Invalid font style '{comboBoxFontStyle.Text}'";
         return;
       }
 
-      // Create the new font.
-      Font newFont = new(FontName.Text, size, style);
+      string fontFamilyName = comboBoxFontName.Text;
+      Font font = customFontFamilies.TryGetValue(fontFamilyName, out FontFamily? fontFamily)
+        ? new(fontFamily, size, style)
+        : new(fontFamilyName, size, style);
 
-      font?.Dispose();
+      selectedFont?.Dispose();
 
-      Sample.Font = font = newFont;
+      labelSampleText.Font = selectedFont = font;
 
       fontError = null;
     }
@@ -102,7 +95,7 @@ public partial class MainForm : Form
   {
     string text = character.ToString();
 
-    SizeF size = globalGraphics.MeasureString(text, font);
+    SizeF size = globalGraphics.MeasureString(text, selectedFont);
     int width = (int)Math.Ceiling(size.Width);
     int height = (int)Math.Ceiling(size.Height);
 
@@ -113,12 +106,12 @@ public partial class MainForm : Form
       graphics.TextRenderingHint = Antialias.Checked ? TextRenderingHint.ClearTypeGridFit : TextRenderingHint.SingleBitPerPixelGridFit;
       graphics.Clear(Color.Transparent);
 
-      int Alpha = int.Parse(AlphaAmount.Text);
-      if (Alpha < 0)
-        Alpha = 0;
-      if (Alpha > 255)
-        Alpha = 255;
-      Color customColor = Color.FromArgb(Alpha, ShadowColorSample.BackColor);
+      int alpha = int.Parse(AlphaAmount.Text);
+      if (alpha < 0)
+        alpha = 0;
+      if (alpha > 255)
+        alpha = 255;
+      Color customColor = Color.FromArgb(alpha, ShadowColorSample.BackColor);
       using (Brush brush = new SolidBrush(Color.White))
       using (Brush brushOutline = new SolidBrush(OutlineColorSample.BackColor))
       using (Brush brushShadow = new SolidBrush(customColor))
@@ -132,26 +125,26 @@ public partial class MainForm : Form
 
         // Draw the shadow
         if (shadow > 0)
-          graphics.DrawString(text, font, brushShadow, shadow, shadow, format);
+          graphics.DrawString(text, selectedFont, brushShadow, shadow, shadow, format);
 
         // Draw the outline
         if (outline > 0)
         {
           for (int i = 1; i <= outline; ++i)
           {
-            graphics.DrawString(text, font, brushOutline, -1 * i, -1 * i, format);
-            graphics.DrawString(text, font, brushOutline, 0, -1 * i, format);
-            graphics.DrawString(text, font, brushOutline, 1 * i, -1 * i, format);
-            graphics.DrawString(text, font, brushOutline, -1 * i, 0, format);
-            graphics.DrawString(text, font, brushOutline, 1 * i, 0, format);
-            graphics.DrawString(text, font, brushOutline, -1 * i, 1 * i, format);
-            graphics.DrawString(text, font, brushOutline, 0, 1 * i, format);
-            graphics.DrawString(text, font, brushOutline, 1 * i, 1 * i, format);
+            graphics.DrawString(text, selectedFont, brushOutline, -1 * i, -1 * i, format);
+            graphics.DrawString(text, selectedFont, brushOutline, 0, -1 * i, format);
+            graphics.DrawString(text, selectedFont, brushOutline, 1 * i, -1 * i, format);
+            graphics.DrawString(text, selectedFont, brushOutline, -1 * i, 0, format);
+            graphics.DrawString(text, selectedFont, brushOutline, 1 * i, 0, format);
+            graphics.DrawString(text, selectedFont, brushOutline, -1 * i, 1 * i, format);
+            graphics.DrawString(text, selectedFont, brushOutline, 0, 1 * i, format);
+            graphics.DrawString(text, selectedFont, brushOutline, 1 * i, 1 * i, format);
           }
         }
 
         // Draw the text
-        graphics.DrawString(text, font, brush, 0, 0, format);
+        graphics.DrawString(text, selectedFont, brush, 0, 0, format);
       }
 
       graphics.Flush();
@@ -246,7 +239,7 @@ public partial class MainForm : Form
     // Choose the files to read text from
     OpenFileDialog openFileDialog = new()
     {
-      InitialDirectory = Properties.Settings.Default.TextFilesDir,
+      InitialDirectory = Settings.Default.TextFilesDir,
       Title = "Coose Text Files",
       DefaultExt = "*",
       Filter = "All files (*.*)|*.*",
@@ -384,15 +377,13 @@ public partial class MainForm : Form
             bitmap.Dispose();
         }
 
-        //Output the characters we just rendered to a text file
+        // Output the characters we just rendered to a text file
         string charOutput = Path.ChangeExtension(fileSelector.FileName, ".txt");
-        TextWriter write = new StreamWriter(charOutput);
-        for (int i = 0; i < characters.Count; i++)
+        using (StreamWriter writer = new(charOutput))
         {
-          write.Write(characters[i]);
+          for (int i = 0; i < characters.Count; i++)
+            writer.Write(characters[i]);
         }
-        write.Close();
-        write.Dispose();
       }
     }
     catch (Exception exception)
@@ -429,5 +420,30 @@ public partial class MainForm : Form
   private void CheckBoxExportDefault_CheckedChanged(object sender, EventArgs e)
   {
     TextFilesListBox.Enabled = ChooseTextFilesButton.Enabled = !checkBoxExportDefault.Checked;
+  }
+
+  private void ButtonChooseFontFiles_Click(object sender, EventArgs e)
+  {
+    OpenFileDialog openFileDialog = new()
+    {
+      InitialDirectory = Settings.Default.TextFilesDir,
+      Title = "Coose Font Files",
+      DefaultExt = "*",
+      Filter = "All files (*.*)|*.*",
+      Multiselect = true
+    };
+
+    if (openFileDialog.ShowDialog() == DialogResult.OK)
+    {
+      foreach (string fileName in openFileDialog.FileNames)
+      {
+        string fontName = Path.GetFileNameWithoutExtension(fileName);
+
+        comboBoxFontName.Items.Add(fontName);
+
+        customFontCollection.AddFontFile(fileName);
+        customFontFamilies.Add(fontName, customFontCollection.Families[^1]);
+      }
+    }
   }
 }

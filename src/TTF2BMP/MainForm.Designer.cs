@@ -39,7 +39,7 @@ namespace TTF2BMP
       Antialias = new System.Windows.Forms.CheckBox();
       label2 = new System.Windows.Forms.Label();
       label3 = new System.Windows.Forms.Label();
-      Sample = new System.Windows.Forms.Label();
+      labelSampleText = new System.Windows.Forms.Label();
       Export = new System.Windows.Forms.Button();
       label5 = new System.Windows.Forms.Label();
       label6 = new System.Windows.Forms.Label();
@@ -55,10 +55,11 @@ namespace TTF2BMP
       ShadowOffset = new System.Windows.Forms.TextBox();
       TextFilesListBox = new System.Windows.Forms.ListBox();
       ChooseTextFilesButton = new System.Windows.Forms.Button();
-      FontSize = new System.Windows.Forms.ComboBox();
-      FontStyle = new System.Windows.Forms.ComboBox();
-      FontName = new System.Windows.Forms.ComboBox();
+      comboBoxFontSize = new System.Windows.Forms.ComboBox();
+      comboBoxFontStyle = new System.Windows.Forms.ComboBox();
+      comboBoxFontName = new System.Windows.Forms.ComboBox();
       checkBoxExportDefault = new System.Windows.Forms.CheckBox();
+      buttonChooseFontFiles = new System.Windows.Forms.Button();
       groupBox1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)OutlineColorSample).BeginInit();
       groupBox2.SuspendLayout();
@@ -112,15 +113,15 @@ namespace TTF2BMP
       // 
       // Sample
       // 
-      Sample.AutoEllipsis = true;
-      Sample.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-      Sample.Location = new System.Drawing.Point(14, 433);
-      Sample.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-      Sample.Name = "Sample";
-      Sample.Size = new System.Drawing.Size(533, 187);
-      Sample.TabIndex = 12;
-      Sample.Text = "The quick brown fox jumped over the LAZY camel";
-      Sample.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      labelSampleText.AutoEllipsis = true;
+      labelSampleText.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+      labelSampleText.Location = new System.Drawing.Point(14, 433);
+      labelSampleText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      labelSampleText.Name = "Sample";
+      labelSampleText.Size = new System.Drawing.Size(533, 187);
+      labelSampleText.TabIndex = 12;
+      labelSampleText.Text = "The quick brown fox jumped over the LAZY camel";
+      labelSampleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // Export
       // 
@@ -283,81 +284,93 @@ namespace TTF2BMP
       ChooseTextFilesButton.UseVisualStyleBackColor = true;
       ChooseTextFilesButton.Click += ChooseTextFilesButton_Click;
       // 
-      // FontSize
+      // comboBoxFontSize
       // 
-      FontSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      FontSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-      FontSize.FormattingEnabled = true;
-      FontSize.Items.AddRange(new object[] { "4", "5", "6", "7", "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "23", "24", "26", "28", "36", "48", "72" });
-      FontSize.Location = new System.Drawing.Point(364, 35);
-      FontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-      FontSize.Name = "FontSize";
-      FontSize.Size = new System.Drawing.Size(56, 202);
-      FontSize.TabIndex = 5;
-      FontSize.Text = "8";
-      FontSize.SelectedIndexChanged += FontSize_SelectedIndexChanged;
-      FontSize.TextUpdate += FontSize_TextUpdate;
+      comboBoxFontSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      comboBoxFontSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+      comboBoxFontSize.FormattingEnabled = true;
+      comboBoxFontSize.Items.AddRange(new object[] { "4", "5", "6", "7", "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "23", "24", "26", "28", "36", "48", "72" });
+      comboBoxFontSize.Location = new System.Drawing.Point(364, 35);
+      comboBoxFontSize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      comboBoxFontSize.Name = "comboBoxFontSize";
+      comboBoxFontSize.Size = new System.Drawing.Size(56, 202);
+      comboBoxFontSize.TabIndex = 5;
+      comboBoxFontSize.Text = "8";
+      comboBoxFontSize.SelectedIndexChanged += FontSize_SelectedIndexChanged;
+      comboBoxFontSize.TextUpdate += FontSize_TextUpdate;
       // 
-      // FontStyle
+      // comboBoxFontStyle
       // 
-      FontStyle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-      FontStyle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-      FontStyle.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      FontStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-      FontStyle.FormattingEnabled = true;
-      FontStyle.Items.AddRange(new object[] { "Regular", "Italic", "Bold", "Bold, Italic" });
-      FontStyle.Location = new System.Drawing.Point(254, 35);
-      FontStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-      FontStyle.Name = "FontStyle";
-      FontStyle.Size = new System.Drawing.Size(93, 202);
-      FontStyle.TabIndex = 3;
-      FontStyle.Text = "Regular";
-      FontStyle.SelectedIndexChanged += FontStyle_SelectedIndexChanged;
+      comboBoxFontStyle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+      comboBoxFontStyle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+      comboBoxFontStyle.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontStyle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      comboBoxFontStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+      comboBoxFontStyle.FormattingEnabled = true;
+      comboBoxFontStyle.Items.AddRange(new object[] { "Regular", "Italic", "Bold", "Bold, Italic" });
+      comboBoxFontStyle.Location = new System.Drawing.Point(254, 35);
+      comboBoxFontStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      comboBoxFontStyle.Name = "comboBoxFontStyle";
+      comboBoxFontStyle.Size = new System.Drawing.Size(93, 202);
+      comboBoxFontStyle.TabIndex = 3;
+      comboBoxFontStyle.Text = "Regular";
+      comboBoxFontStyle.SelectedIndexChanged += FontStyle_SelectedIndexChanged;
       // 
-      // FontName
+      // ComboBoxFontName
       // 
-      FontName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-      FontName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-      FontName.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      FontName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-      FontName.FormattingEnabled = true;
-      FontName.Location = new System.Drawing.Point(18, 35);
-      FontName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-      FontName.Name = "FontName";
-      FontName.Size = new System.Drawing.Size(220, 202);
-      FontName.TabIndex = 1;
-      FontName.SelectedIndexChanged += FontName_SelectedIndexChanged;
+      comboBoxFontName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+      comboBoxFontName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+      comboBoxFontName.DataBindings.Add(new System.Windows.Forms.Binding("Text", settings1, "FontName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      comboBoxFontName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+      comboBoxFontName.FormattingEnabled = true;
+      comboBoxFontName.Location = new System.Drawing.Point(18, 35);
+      comboBoxFontName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      comboBoxFontName.Name = "ComboBoxFontName";
+      comboBoxFontName.Size = new System.Drawing.Size(220, 165);
+      comboBoxFontName.TabIndex = 1;
+      comboBoxFontName.SelectedIndexChanged += FontName_SelectedIndexChanged;
       // 
-      // checkBoxExportAllGlyphs
+      // checkBoxExportDefault
       // 
       checkBoxExportDefault.AutoSize = true;
       checkBoxExportDefault.Location = new System.Drawing.Point(153, 247);
-      checkBoxExportDefault.Name = "checkBoxExportAllGlyphs";
+      checkBoxExportDefault.Name = "checkBoxExportDefault";
       checkBoxExportDefault.Size = new System.Drawing.Size(157, 19);
       checkBoxExportDefault.TabIndex = 38;
       checkBoxExportDefault.Text = "Export Default ( 32 .. 126)";
       checkBoxExportDefault.UseVisualStyleBackColor = true;
       checkBoxExportDefault.CheckedChanged += CheckBoxExportDefault_CheckedChanged;
       // 
+      // buttonChooseFontFiles
+      // 
+      buttonChooseFontFiles.Location = new System.Drawing.Point(18, 200);
+      buttonChooseFontFiles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+      buttonChooseFontFiles.Name = "buttonChooseFontFiles";
+      buttonChooseFontFiles.Size = new System.Drawing.Size(220, 27);
+      buttonChooseFontFiles.TabIndex = 39;
+      buttonChooseFontFiles.Text = "Choose Font Files";
+      buttonChooseFontFiles.UseVisualStyleBackColor = true;
+      buttonChooseFontFiles.Click += ButtonChooseFontFiles_Click;
+      // 
       // MainForm
       // 
       AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       ClientSize = new System.Drawing.Size(572, 630);
+      Controls.Add(buttonChooseFontFiles);
       Controls.Add(checkBoxExportDefault);
       Controls.Add(ChooseTextFilesButton);
       Controls.Add(TextFilesListBox);
       Controls.Add(groupBox2);
       Controls.Add(groupBox1);
       Controls.Add(Export);
-      Controls.Add(Sample);
+      Controls.Add(labelSampleText);
       Controls.Add(label3);
       Controls.Add(label2);
       Controls.Add(label5);
       Controls.Add(Antialias);
-      Controls.Add(FontSize);
-      Controls.Add(FontStyle);
-      Controls.Add(FontName);
+      Controls.Add(comboBoxFontSize);
+      Controls.Add(comboBoxFontStyle);
+      Controls.Add(comboBoxFontName);
       Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
       Name = "MainForm";
       Text = "TTF2BMP";
@@ -375,13 +388,13 @@ namespace TTF2BMP
 
     #endregion
 
-    private System.Windows.Forms.ComboBox FontName;
-        private System.Windows.Forms.ComboBox FontStyle;
-        private System.Windows.Forms.ComboBox FontSize;
+    private System.Windows.Forms.ComboBox comboBoxFontName;
+        private System.Windows.Forms.ComboBox comboBoxFontStyle;
+        private System.Windows.Forms.ComboBox comboBoxFontSize;
         private System.Windows.Forms.CheckBox Antialias;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label Sample;
+        private System.Windows.Forms.Label labelSampleText;
         private System.Windows.Forms.Button Export;
         private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox OutlineSize;
@@ -398,6 +411,7 @@ namespace TTF2BMP
 		private System.Windows.Forms.ListBox TextFilesListBox;
 		private System.Windows.Forms.Button ChooseTextFilesButton;
     private System.Windows.Forms.CheckBox checkBoxExportDefault;
+    private System.Windows.Forms.Button buttonChooseFontFiles;
   }
 }
 
