@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms;
+using TTF2BMP.Fonts;
 using TTF2BMP.Properties;
 
 namespace TTF2BMP;
@@ -17,8 +18,7 @@ public partial class MainForm : Form
   private const int FirstCharacterUnicode = 32; // Space
   private const int LastCharacterUnicode = 126; // Tilde
 
-  private readonly PrivateFontCollection customFontCollection = new();
-  private readonly Dictionary<string, FontFamily> customFontFamilies = [];
+  private readonly CustomFontService customFontService = new();
   private readonly Bitmap globalBitmap;
   private readonly Graphics globalGraphics;
   private Font? selectedFont;
@@ -31,13 +31,20 @@ public partial class MainForm : Form
     globalBitmap = new(1, 1, PixelFormat.Format32bppArgb);
     globalGraphics = Graphics.FromImage(globalBitmap);
 
+    // load default font families
     foreach (FontFamily fontFamily in FontFamily.Families)
       comboBoxFontName.Items.Add(fontFamily.Name);
 
+    LoadSettings();
+  }
+
+  private void LoadSettings()
+  {
     comboBoxFontName.Text = Settings.Default.FontName;
     OutlineColorSample.BackColor = Settings.Default.OutlineColor;
     ShadowColorSample.BackColor = Settings.Default.ShadowColor;
 
+    // Text files
     if (Settings.Default.TextFiles is not null)
     {
       foreach (string? fileName in Settings.Default.TextFiles)
@@ -46,6 +53,33 @@ public partial class MainForm : Form
           TextFilesListBox.Items.Add(fileName);
       }
     }
+
+    // Font files
+    if (Settings.Default.FontFiles is not null)
+    {
+      customFontService.Load([.. Settings.Default.FontFiles!]);
+
+      foreach (CustomFont customFont in customFontService.Fonts)
+        comboBoxFontName.Items.Add(customFont.FontName);
+    }
+  }
+
+  private void SaveSettings()
+  {
+    // Text files
+    Settings.Default.TextFiles = [];
+
+    foreach (string fileName in TextFilesListBox.Items)
+      Settings.Default.TextFiles.Add(fileName);
+
+    // Font files
+    Settings.Default.FontFiles = [];
+
+    foreach (CustomFont customFont in customFontService.Fonts)
+      Settings.Default.FontFiles.Add(customFont.FilePath);
+
+    // Save
+    Settings.Default.Save();
   }
 
   /// <summary>
@@ -71,7 +105,7 @@ public partial class MainForm : Form
       }
 
       string fontFamilyName = comboBoxFontName.Text;
-      Font font = customFontFamilies.TryGetValue(fontFamilyName, out FontFamily? fontFamily)
+      Font font = customFontService.TryGetFontFamily(fontFamilyName, out FontFamily? fontFamily)
         ? new(fontFamily, size, style)
         : new(fontFamilyName, size, style);
 
@@ -215,24 +249,16 @@ public partial class MainForm : Form
   }
 
   private void FontName_SelectedIndexChanged(object sender, EventArgs e)
-  {
-    SelectionChanged();
-  }
+    => SelectionChanged();
 
   private void FontStyle_SelectedIndexChanged(object sender, EventArgs e)
-  {
-    SelectionChanged();
-  }
+    => SelectionChanged();
 
   private void FontSize_TextUpdate(object sender, EventArgs e)
-  {
-    SelectionChanged();
-  }
+    => SelectionChanged();
 
   private void FontSize_SelectedIndexChanged(object sender, EventArgs e)
-  {
-    SelectionChanged();
-  }
+    => SelectionChanged();
 
   private void ChooseTextFilesButton_Click(object sender, EventArgs e)
   {
@@ -240,7 +266,7 @@ public partial class MainForm : Form
     OpenFileDialog openFileDialog = new()
     {
       InitialDirectory = Settings.Default.TextFilesDir,
-      Title = "Coose Text Files",
+      Title = "Choose Text Files",
       DefaultExt = "*",
       Filter = "All files (*.*)|*.*",
       Multiselect = true
@@ -408,14 +434,7 @@ public partial class MainForm : Form
   }
 
   private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-  {
-    Settings.Default.TextFiles = [];
-
-    foreach (string fileName in TextFilesListBox.Items)
-      Settings.Default.TextFiles.Add(fileName);
-
-    Settings.Default.Save();
-  }
+    => SaveSettings();
 
   private void CheckBoxExportDefault_CheckedChanged(object sender, EventArgs e)
   {
@@ -426,10 +445,9 @@ public partial class MainForm : Form
   {
     OpenFileDialog openFileDialog = new()
     {
-      InitialDirectory = Settings.Default.TextFilesDir,
-      Title = "Coose Font Files",
-      DefaultExt = "*",
-      Filter = "All files (*.*)|*.*",
+      InitialDirectory = Settings.Default.FontFilesDir,
+      Title = "Choose Font Files",
+      Filter = "Font Files (*.ttf;*.otf;*.ttc)|*.ttf;*.otf;*.ttc|TrueType Fonts (*.ttf)|*.ttf|OpenType Fonts (*.otf)|*.otf|Font Collections (*.ttc)|*.ttc|All Files (*.*)|*.*",
       Multiselect = true
     };
 
@@ -437,12 +455,8 @@ public partial class MainForm : Form
     {
       foreach (string fileName in openFileDialog.FileNames)
       {
-        string fontName = Path.GetFileNameWithoutExtension(fileName);
-
-        comboBoxFontName.Items.Add(fontName);
-
-        customFontCollection.AddFontFile(fileName);
-        customFontFamilies.Add(fontName, customFontCollection.Families[^1]);
+        if (customFontService.TryLoad(fileName, out CustomFont? customFont))
+        comboBoxFontName.Items.Add(customFont.FontName);
       }
     }
   }
